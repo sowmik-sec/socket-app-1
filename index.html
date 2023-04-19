@@ -7,14 +7,19 @@
     <title>My first Socket IO Project</title>
   </head>
   <body>
-    <h1 id="myTime"></h1>
+    <input type="text" id="name" />
+    <button onclick="send()" id="send">Send</button>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let socket = io();
-      socket.on("myEvent", (msg) => {
-        document.getElementById("myTime").innerHTML = "";
-        document.getElementById("myTime").innerHTML = msg;
-      });
+      const socket = io();
+      const send = () => {
+        const name = document.getElementById("name").value;
+        socket.send(name);
+      };
+      //   socket.on("myEvent", (msg) => {
+      //     document.getElementById("myTime").innerHTML = "";
+      //     document.getElementById("myTime").innerHTML = msg;
+      //   });
     </script>
   </body>
 </html>

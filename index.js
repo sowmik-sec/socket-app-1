@@ -10,11 +10,15 @@ const io = new Server(expressServer);
 io.on("connection", (socket) => {
   console.log("New User Connected");
 
-  setInterval(() => {
-    const d = new Date();
-    const t = d.getTime();
-    socket.emit("myEvent", t);
-  }, 10);
+  socket.on("message", (msg) => {
+    console.log(msg);
+  });
+
+  //   setInterval(() => {
+  //     const d = new Date();
+  //     const t = d.getTime();
+  //     socket.emit("myEvent", t);
+  //   }, 10);
   //   setInterval(() => {
   //     const d = new Date();
   //     const t = d.getTime();
