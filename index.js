@@ -10,9 +10,20 @@ const io = new Server(expressServer);
 io.on("connection", (socket) => {
   console.log("New User Connected");
 
-  setTimeout(() => {
-    socket.send("Learning socket.io (server-->client)");
-  }, 5000);
+  setInterval(() => {
+    const d = new Date();
+    const t = d.getTime();
+    socket.emit("myEvent", t);
+  }, 10);
+  //   setInterval(() => {
+  //     const d = new Date();
+  //     const t = d.getTime();
+  //     socket.send(t);
+  //   }, 1000);
+
+  //   setTimeout(() => {
+  //     socket.send("Learning socket.io (server-->client)");
+  //   }, 5000);
   //   socket.on("disconnect", () => {
   //     console.log("User Disconnected");
   //   });
