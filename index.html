@@ -7,15 +7,20 @@
     <title>My first Socket IO Project</title>
   </head>
   <body>
-    <input type="text" id="name" />
-    <button onclick="send()" id="send">Send</button>
+    <h1 id="msg"></h1>
+    <!-- <input type="text" id="name" />
+    <button onclick="send()" id="send">Send</button> -->
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      const socket = io();
-      const send = () => {
-        const name = document.getElementById("name").value;
-        socket.send(name);
-      };
+      const socket = io("/sell");
+      socket.on("myEvent", (data) => {
+        document.getElementById("msg").innerHTML = data;
+      });
+      //   const send = () => {
+      //     const name = document.getElementById("name").value;
+      //     socket.emit("myEvent", name);
+      //     // socket.send(name);
+      //   };
       //   socket.on("myEvent", (msg) => {
       //     document.getElementById("myTime").innerHTML = "";
       //     document.getElementById("myTime").innerHTML = msg;
